@@ -1,0 +1,3480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FreshMart | Online Supermarket</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f6f8f3;
+    color: #263c30;
+}
+
+header {
+    background: #194b38;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+button {
+    background: #245b40;
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #397b55;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.hero {
+    background: #e2efdf;
+    padding: 55px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 20px;
+}
+
+.hero img {
+    width: 330px;
+    max-width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.search-area {
+    text-align: center;
+    padding: 25px;
+}
+
+.search-area input {
+    max-width: 500px;
+}
+
+.section {
+    padding: 35px 6%;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.categories button {
+    background: white;
+    color: #245b40;
+    border: 1px solid #245b40;
+}
+
+.categories button.active {
+    background: #245b40;
+    color: white;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    padding: 13px;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.product img {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+.product h3 {
+    margin: 12px 0 7px;
+}
+
+.product p {
+    color: #287348;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.product button {
+    width: 100%;
+}
+
+.store-select {
+    margin-top: 8px;
+}
+
+.store-select label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.availability {
+    background: #edf7ea;
+    padding: 8px;
+    border-radius: 7px;
+    margin: 8px 0 12px;
+    font-size: 13px;
+    color: #287348;
+}
+
+.store-section {
+    background: #eef5eb;
+    padding: 40px 6%;
+}
+
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.store-card {
+    background: white;
+    padding: 20px;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.store-card h3 {
+    color: #194b38;
+    margin-bottom: 10px;
+}
+
+.store-card p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.store-card .store-tag {
+    display: inline-block;
+    background: #dcefd8;
+    color: #245b40;
+    padding: 5px 9px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.cart-section {
+    background: #eaf1e8;
+    padding: 40px 6%;
+}
+
+.cart {
+    background: white;
+    padding: 22px;
+    border-radius: 13px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.cart-info {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.cart-info img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+.cart-info p {
+    color: #287348;
+    margin-top: 6px;
+}
+
+.store-info-cart {
+    background: #f0f6ed;
+    padding: 8px;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.remove {
+    background: #c74646;
+}
+
+.total {
+    text-align: right;
+    font-size: 23px;
+    font-weight: bold;
+    margin: 22px 0;
+}
+
+.checkout {
+    display: block;
+    margin-left: auto;
+}
+
+.panel {
+    background: white;
+    padding: 25px;
+    border-radius: 13px;
+    max-width: 650px;
+    margin: 25px auto;
+    box-shadow: 0 3px 15px #00000012;
+}
+
+.panel button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.payment-option input {
+    width: auto;
+    margin: 0;
+}
+
+.payment-option label {
+    cursor: pointer;
+}
+
+#loginPage {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #194b38, #82a879);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 35px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.login-box h1 {
+    color: #194b38;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    margin-bottom: 20px;
+    color: #777;
+}
+
+.login-type {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.login-type button {
+    width: 50%;
+}
+
+.login-type button.active {
+    background: #194b38;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.summary {
+    background: #f0f6ed;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.admin-card {
+    text-align: center;
+    padding: 25px;
+}
+
+.admin-card h2 {
+    font-size: 35px;
+}
+
+.admin-card p {
+    font-size: 20px;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.admin-actions button {
+    flex: 1;
+    min-width: 150px;
+}
+
+.admin-store {
+    border-left: 5px solid #245b40;
+}
+
+footer {
+    background: #194b38;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media(max-width: 600px) {
+
+    header {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ===================================================== -->
+<!-- LOGIN PAGE -->
+<!-- ===================================================== -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <h1>🥬 FreshMart</h1>
+
+        <p>Welcome to FreshMart</p>
+
+        <div class="login-type">
+
+            <button
+                id="customerTab"
+                class="active"
+                type="button"
+                onclick="showCustomerLogin()">
+
+                👤 Customer
+
+            </button>
+
+            <button
+                id="adminTab"
+                type="button"
+                onclick="showAdminLogin()">
+
+                🔐 Admin
+
+            </button>
+
+        </div>
+
+
+        <!-- CUSTOMER LOGIN -->
+
+        <div id="customerLogin">
+
+            <h2>Customer Login</h2>
+
+            <form onsubmit="customerLogin(event)">
+
+                <input
+                    id="loginName"
+                    placeholder="Your Name"
+                    required>
+
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="Email Address"
+                    required>
+
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Password"
+                    minlength="4"
+                    required>
+
+                <button type="submit">
+
+                    Login / Sign Up
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ADMIN LOGIN -->
+
+        <div id="adminLogin" class="hidden">
+
+            <h2>🔐 Admin Login</h2>
+
+            <form onsubmit="adminLogin(event)">
+
+                <input
+                    id="adminUsername"
+                    placeholder="Admin Username"
+                    required>
+
+                <input
+                    id="adminPassword"
+                    type="password"
+                    placeholder="Admin Password"
+                    required>
+
+                <button type="submit">
+
+                    Admin Login
+
+                </button>
+
+            </form>
+
+            <p style="font-size:13px;margin-top:15px;">
+
+                Admin access only
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- CUSTOMER WEBSITE -->
+<!-- ===================================================== -->
+
+<div id="website" class="hidden">
+
+<header>
+
+    <div class="logo">
+
+        🥬 FreshMart
+
+    </div>
+
+    <nav>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#products">
+            Products
+        </a>
+
+        <a href="#stores">
+            Stores
+        </a>
+
+        <a href="#cart">
+            Cart 🛒 (<span id="count">0</span>)
+        </a>
+
+        <a href="#checkoutSection">
+            Checkout
+        </a>
+
+        <a href="#" onclick="logout()">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ===================================================== -->
+<!-- HERO -->
+<!-- ===================================================== -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <h1>
+            Freshness at Your Doorstep!
+        </h1>
+
+        <p>
+            Everything you need for your daily life in one place.
+        </p>
+
+        <a href="#products">
+
+            <button>
+                Shop Now →
+            </button>
+
+        </a>
+
+        <p id="welcome"></p>
+
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=700"
+        alt="Fresh groceries">
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- SEARCH -->
+<!-- ===================================================== -->
+
+<div class="search-area">
+
+    <input
+        id="search"
+        type="text"
+        placeholder="🔍 Search fruits, vegetables, groceries..."
+        oninput="displayProducts()">
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- PRODUCTS -->
+<!-- ===================================================== -->
+
+<section class="section" id="products">
+
+    <h2>
+        🛍️ Explore Our Products
+    </h2>
+
+    <div
+        class="categories"
+        id="categories">
+    </div>
+
+    <p style="margin-bottom:20px;color:#555;">
+
+        📍 <strong>Important:</strong>
+        Select the store where you want to purchase each product.
+
+    </p>
+
+    <div
+        class="products"
+        id="productList">
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- STORES -->
+<!-- ===================================================== -->
+
+<section class="store-section" id="stores">
+
+    <h2>
+        🏪 Our FreshMart Stores
+    </h2>
+
+    <p style="margin-bottom:25px;">
+
+        Choose a store based on product availability and location.
+
+    </p>
+
+    <div
+        class="store-grid"
+        id="storeList">
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- CART -->
+<!-- ===================================================== -->
+
+<section class="cart-section" id="cart">
+
+    <h2>
+        🛒 My Shopping Cart
+    </h2>
+
+    <div class="cart">
+
+        <div id="cartItems">
+
+            <p>
+                Your cart is empty!
+            </p>
+
+        </div>
+
+        <div class="total">
+
+            Total: ₹<span id="total">0</span>
+
+        </div>
+
+        <button
+            class="checkout"
+            onclick="goCheckout()">
+
+            Proceed to Checkout →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- CHECKOUT -->
+<!-- ===================================================== -->
+
+<section
+    class="section hidden"
+    id="checkoutSection">
+
+    <div class="panel">
+
+        <h2>
+            📦 Delivery Details
+        </h2>
+
+        <form
+            id="deliveryForm"
+            onsubmit="event.preventDefault(); showSummary();">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                id="customerName"
+                required>
+
+
+            <label>
+                Mobile Number
+            </label>
+
+            <input
+                id="phone"
+                type="tel"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                placeholder="10 digit mobile number"
+                required>
+
+
+            <label>
+                Email Address
+            </label>
+
+            <input
+                id="customerEmail"
+                type="email"
+                required>
+
+
+            <label>
+                House / Street Address
+            </label>
+
+            <textarea
+                id="address"
+                rows="3"
+                placeholder="Enter your full address"
+                required></textarea>
+
+
+            <label>
+                City
+            </label>
+
+            <input
+                id="city"
+                required>
+
+
+            <label>
+                State
+            </label>
+
+            <input
+                id="state"
+                required>
+
+
+            <label>
+                PIN Code
+            </label>
+
+            <input
+                id="pincode"
+                pattern="[0-9]{6}"
+                maxlength="6"
+                required>
+
+
+            <h2>
+                💳 Payment Method
+            </h2>
+
+
+            <div class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    id="cod"
+                    value="Cash on Delivery"
+                    checked>
+
+                <label for="cod">
+
+                    💵 Cash on Delivery
+
+                </label>
+
+            </div>
+
+
+            <div class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    id="upi"
+                    value="UPI">
+
+                <label for="upi">
+
+                    📱 UPI Payment
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="upiDetails"
+                class="hidden">
+
+                <input
+                    id="upiId"
+                    placeholder="Enter UPI ID">
+
+            </div>
+
+
+            <div class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    id="card"
+                    value="Debit / Credit Card">
+
+                <label for="card">
+
+                    💳 Debit / Credit Card
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="cardDetails"
+                class="hidden">
+
+                <input
+                    id="cardNumber"
+                    maxlength="19"
+                    placeholder="Demo card number">
+
+                <input
+                    id="cardExpiry"
+                    placeholder="MM/YY">
+
+                <input
+                    id="cardCVV"
+                    maxlength="4"
+                    type="password"
+                    placeholder="CVV">
+
+            </div>
+
+
+            <p style="color:#b36b00;font-size:13px">
+
+                Demo checkout only.
+                No real payment is processed.
+                Do not enter actual card details.
+
+            </p>
+
+
+            <button type="submit">
+
+                Continue to Order Summary
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- ORDER SUMMARY -->
+
+    <div
+        id="orderSummary"
+        class="panel hidden">
+
+        <h2>
+            🧾 Order Summary
+        </h2>
+
+        <div id="summaryItems"></div>
+
+        <div class="summary">
+
+            <h3>
+
+                Total Amount:
+                ₹<span id="finalTotal">0</span>
+
+            </h3>
+
+            <p id="summaryPayment"></p>
+
+            <p id="summaryAddress"></p>
+
+        </div>
+
+        <button onclick="placeOrder()">
+
+            Place Order ❤️
+
+        </button>
+
+    </div>
+
+
+    <!-- SUCCESS -->
+
+    <div
+        id="successPage"
+        class="panel hidden"
+        style="text-align:center">
+
+        <h1 style="color:#287348">
+
+            🎉 Order Placed!
+
+        </h1>
+
+        <br>
+
+        <h3>
+
+            Thank you for shopping with FreshMart!
+
+        </h3>
+
+        <br>
+
+        <p>
+
+            Your order has been successfully placed.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Order ID:
+            <strong id="orderId"></strong>
+
+        </p>
+
+        <br>
+
+        <p>
+            Delivery Address:
+        </p>
+
+        <p id="successAddress"></p>
+
+        <br>
+
+        <h3>
+
+            Expected Delivery:
+            Within 2-3 Days
+
+        </h3>
+
+        <br>
+
+        <button onclick="newShopping()">
+
+            Continue Shopping
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h3>
+        🥬 FreshMart
+    </h3>
+
+    <br>
+
+    <p>
+        Your everyday shopping partner ❤️
+    </p>
+
+    <p>
+        © 2026 FreshMart. All Rights Reserved.
+    </p>
+
+</footer>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- ADMIN DASHBOARD -->
+<!-- ===================================================== -->
+
+<div id="adminPage" class="hidden">
+
+<header>
+
+    <div class="logo">
+
+        🔐 FreshMart Admin
+
+    </div>
+
+    <nav>
+
+        <a href="#adminHome">
+            Dashboard
+        </a>
+
+        <a href="#adminProducts">
+            Products
+        </a>
+
+        <a href="#adminStores">
+            Stores
+        </a>
+
+        <a href="#adminOrders">
+            Orders
+        </a>
+
+        <a href="#" onclick="adminLogout()">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ADMIN DASHBOARD -->
+
+<section
+    class="section"
+    id="adminHome">
+
+    <h2>
+        📊 Admin Dashboard
+    </h2>
+
+    <p style="margin-bottom:25px;">
+
+        Welcome Admin! Manage your FreshMart store here.
+
+    </p>
+
+
+    <div class="products">
+
+
+        <div class="product admin-card">
+
+            <h2>
+                🛍️
+            </h2>
+
+            <h3>
+                Total Products
+            </h3>
+
+            <p id="adminProductCount">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="product admin-card">
+
+            <h2>
+                📦
+            </h2>
+
+            <h3>
+                Total Orders
+            </h3>
+
+            <p id="adminOrderCount">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="product admin-card">
+
+            <h2>
+                👥
+            </h2>
+
+            <h3>
+                Customers
+            </h3>
+
+            <p id="adminCustomerCount">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="product admin-card">
+
+            <h2>
+                💰
+            </h2>
+
+            <h3>
+                Total Sales
+            </h3>
+
+            <p>
+                ₹<span id="adminSales">0</span>
+            </p>
+
+        </div>
+
+
+        <div class="product admin-card">
+
+            <h2>
+                🏪
+            </h2>
+
+            <h3>
+                Stores
+            </h3>
+
+            <p id="adminStoreCount">
+                0
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- ADMIN PRODUCT MANAGEMENT -->
+<!-- ===================================================== -->
+
+<section
+    class="section"
+    id="adminProducts">
+
+    <h2>
+        🛍️ Manage Products
+    </h2>
+
+
+    <div class="panel">
+
+        <h3>
+            Add New Product
+        </h3>
+
+
+        <input
+            id="newProductName"
+            placeholder="Product Name">
+
+
+        <input
+            id="newProductPrice"
+            type="number"
+            placeholder="Price">
+
+
+        <select id="newProductCategory">
+
+            <option value="Fruits">
+                Fruits
+            </option>
+
+            <option value="Vegetables">
+                Vegetables
+            </option>
+
+            <option value="Juices">
+                Juices
+            </option>
+
+            <option value="Dairy">
+                Dairy
+            </option>
+
+            <option value="Bakery">
+                Bakery
+            </option>
+
+            <option value="Groceries">
+                Groceries
+            </option>
+
+            <option value="Snacks">
+                Snacks
+            </option>
+
+            <option value="Personal Care">
+                Personal Care
+            </option>
+
+            <option value="Household">
+                Household
+            </option>
+
+        </select>
+
+
+        <label>
+            Select Stores Where Product Is Available
+        </label>
+
+        <select
+            id="newProductStores"
+            multiple
+            style="height:140px;">
+
+        </select>
+
+        <small>
+            Hold Ctrl and select multiple stores.
+        </small>
+
+        <button onclick="addAdminProduct()">
+
+            ➕ Add Product
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="adminProductList"
+        class="products">
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- ADMIN STORES -->
+<!-- ===================================================== -->
+
+<section
+    class="section"
+    id="adminStores">
+
+    <h2>
+        🏪 Store Management
+    </h2>
+
+    <div
+        id="adminStoreList"
+        class="store-grid">
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- ADMIN ORDERS -->
+<!-- ===================================================== -->
+
+<section
+    class="section"
+    id="adminOrders">
+
+    <h2>
+        📦 Customer Orders
+    </h2>
+
+    <div class="panel">
+
+        <div id="adminOrdersList">
+
+            <p>
+                No orders yet.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h3>
+        🔐 FreshMart Admin Panel
+    </h3>
+
+    <br>
+
+    <p>
+        Admin Management System
+    </p>
+
+</footer>
+
+</div>
+
+
+<script>
+
+
+// =====================================================
+// LOGIN SYSTEM
+// =====================================================
+
+let userName = "";
+
+
+function showCustomerLogin() {
+
+    document
+        .getElementById("customerLogin")
+        .classList
+        .remove("hidden");
+
+    document
+        .getElementById("adminLogin")
+        .classList
+        .add("hidden");
+
+    document
+        .getElementById("customerTab")
+        .classList
+        .add("active");
+
+    document
+        .getElementById("adminTab")
+        .classList
+        .remove("active");
+
+}
+
+
+function showAdminLogin() {
+
+    document
+        .getElementById("customerLogin")
+        .classList
+        .add("hidden");
+
+    document
+        .getElementById("adminLogin")
+        .classList
+        .remove("hidden");
+
+    document
+        .getElementById("adminTab")
+        .classList
+        .add("active");
+
+    document
+        .getElementById("customerTab")
+        .classList
+        .remove("active");
+
+}
+
+
+function customerLogin(event) {
+
+    event.preventDefault();
+
+    userName =
+        document
+        .getElementById("loginName")
+        .value;
+
+    let email =
+        document
+        .getElementById("loginEmail")
+        .value;
+
+    document
+        .getElementById("loginPage")
+        .classList
+        .add("hidden");
+
+    document
+        .getElementById("website")
+        .classList
+        .remove("hidden");
+
+    document
+        .getElementById("welcome")
+        .textContent =
+        "Welcome, " + userName + " ❤️";
+
+    document
+        .getElementById("customerName")
+        .value = userName;
+
+    document
+        .getElementById("customerEmail")
+        .value = email;
+
+}
+
+
+function adminLogin(event) {
+
+    event.preventDefault();
+
+    let username =
+        document
+        .getElementById("adminUsername")
+        .value;
+
+    let password =
+        document
+        .getElementById("adminPassword")
+        .value;
+
+    if (
+        username === "admin" &&
+        password === "admin123"
+    ) {
+
+        document
+            .getElementById("loginPage")
+            .classList
+            .add("hidden");
+
+        document
+            .getElementById("website")
+            .classList
+            .add("hidden");
+
+        document
+            .getElementById("adminPage")
+            .classList
+            .remove("hidden");
+
+        updateAdminDashboard();
+
+    } else {
+
+        alert(
+            "Invalid Admin Username or Password!"
+        );
+
+    }
+
+}
+
+
+function logout() {
+
+    document
+        .getElementById("website")
+        .classList
+        .add("hidden");
+
+    document
+        .getElementById("loginPage")
+        .classList
+        .remove("hidden");
+
+    showCustomerLogin();
+
+}
+
+
+function adminLogout() {
+
+    document
+        .getElementById("adminPage")
+        .classList
+        .add("hidden");
+
+    document
+        .getElementById("loginPage")
+        .classList
+        .remove("hidden");
+
+    document
+        .getElementById("adminUsername")
+        .value = "";
+
+    document
+        .getElementById("adminPassword")
+        .value = "";
+
+    showAdminLogin();
+
+}
+
+
+// =====================================================
+// STORE DATABASE
+// =====================================================
+
+const stores = [
+
+    {
+        id: 1,
+        name: "FreshMart Coimbatore Central",
+        location: "RS Puram",
+        city: "Coimbatore",
+        state: "Tamil Nadu",
+        address: "123 DB Road, RS Puram, Coimbatore",
+        phone: "+91 98765 10001",
+        timing: "7:00 AM - 10:00 PM",
+        rating: "4.8",
+        manager: "Arun Kumar"
+    },
+
+    {
+        id: 2,
+        name: "FreshMart Gandhipuram",
+        location: "Gandhipuram",
+        city: "Coimbatore",
+        state: "Tamil Nadu",
+        address: "45 Cross Cut Road, Gandhipuram, Coimbatore",
+        phone: "+91 98765 10002",
+        timing: "7:00 AM - 10:00 PM",
+        rating: "4.7",
+        manager: "Ravi Kumar"
+    },
+
+    {
+        id: 3,
+        name: "FreshMart Peelamedu",
+        location: "Peelamedu",
+        city: "Coimbatore",
+        state: "Tamil Nadu",
+        address: "78 Avinashi Road, Peelamedu, Coimbatore",
+        phone: "+91 98765 10003",
+        timing: "7:00 AM - 11:00 PM",
+        rating: "4.6",
+        manager: "Suresh Babu"
+    },
+
+    {
+        id: 4,
+        name: "FreshMart Saibaba Colony",
+        location: "Saibaba Colony",
+        city: "Coimbatore",
+        state: "Tamil Nadu",
+        address: "21 NSR Road, Saibaba Colony, Coimbatore",
+        phone: "+91 98765 10004",
+        timing: "8:00 AM - 10:00 PM",
+        rating: "4.7",
+        manager: "Karthik Raj"
+    },
+
+    {
+        id: 5,
+        name: "FreshMart Singanallur",
+        location: "Singanallur",
+        city: "Coimbatore",
+        state: "Tamil Nadu",
+        address: "56 Trichy Road, Singanallur, Coimbatore",
+        phone: "+91 98765 10005",
+        timing: "7:00 AM - 10:00 PM",
+        rating: "4.5",
+        manager: "Vijay Anand"
+    }
+
+];
+
+
+// =====================================================
+// PRODUCT DATABASE
+// =====================================================
+
+const products = [
+
+{
+id:1,
+name:"Apple",
+category:"Fruits",
+price:120,
+image:"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500",
+stores:[1,2,3,4]
+},
+
+{
+id:2,
+name:"Banana",
+category:"Fruits",
+price:50,
+image:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500",
+stores:[1,2,3,5]
+},
+
+{
+id:3,
+name:"Orange",
+category:"Fruits",
+price:80,
+image:"https://images.unsplash.com/photo-1547514701-42782101795e?w=500",
+stores:[1,2,4]
+},
+
+{
+id:4,
+name:"Grapes",
+category:"Fruits",
+price:90,
+image:"https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=500",
+stores:[2,3,5]
+},
+
+{
+id:5,
+name:"Mango",
+category:"Fruits",
+price:100,
+image:"https://images.unsplash.com/photo-1553279768-865429fa0078?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:6,
+name:"Watermelon",
+category:"Fruits",
+price:60,
+image:"https://images.unsplash.com/photo-1563114773-84221bd62daa?w=500",
+stores:[1,3,5]
+},
+
+{
+id:7,
+name:"Papaya",
+category:"Fruits",
+price:55,
+image:"https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?w=500",
+stores:[2,4,5]
+},
+
+{
+id:8,
+name:"Pineapple",
+category:"Fruits",
+price:70,
+image:"https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=500",
+stores:[1,2,3,5]
+},
+
+{
+id:9,
+name:"Tomato",
+category:"Vegetables",
+price:40,
+image:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:10,
+name:"Potato",
+category:"Vegetables",
+price:35,
+image:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500",
+stores:[1,2,3,4]
+},
+
+{
+id:11,
+name:"Carrot",
+category:"Vegetables",
+price:60,
+image:"https://images.unsplash.com/photo-1445282768818-728615cc910a?w=500",
+stores:[2,3,4,5]
+},
+
+{
+id:12,
+name:"Onion",
+category:"Vegetables",
+price:45,
+image:"https://images.unsplash.com/photo-1508747703725-719777637510?w=500",
+stores:[1,2,3,5]
+},
+
+{
+id:13,
+name:"Broccoli",
+category:"Vegetables",
+price:90,
+image:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=500",
+stores:[1,3,4]
+},
+
+{
+id:14,
+name:"Cucumber",
+category:"Vegetables",
+price:30,
+image:"https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=500",
+stores:[2,3,4,5]
+},
+
+{
+id:15,
+name:"Spinach",
+category:"Vegetables",
+price:25,
+image:"https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=500",
+stores:[1,2,4,5]
+},
+
+{
+id:16,
+name:"Cabbage",
+category:"Vegetables",
+price:35,
+image:"https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?w=500",
+stores:[1,3,5]
+},
+
+{
+id:17,
+name:"Orange Juice",
+category:"Juices",
+price:90,
+image:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:18,
+name:"Apple Juice",
+category:"Juices",
+price:100,
+image:"https://images.unsplash.com/photo-1576673442511-7e39b6545c87?w=500",
+stores:[1,3,4]
+},
+
+{
+id:19,
+name:"Fresh Lemon Juice",
+category:"Juices",
+price:50,
+image:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=500",
+stores:[2,4,5]
+},
+
+{
+id:20,
+name:"Milk",
+category:"Dairy",
+price:30,
+image:"https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:21,
+name:"Cheese",
+category:"Dairy",
+price:120,
+image:"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=500",
+stores:[1,2,3]
+},
+
+{
+id:22,
+name:"Butter",
+category:"Dairy",
+price:55,
+image:"https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=500",
+stores:[1,3,4,5]
+},
+
+{
+id:23,
+name:"Eggs",
+category:"Dairy",
+price:75,
+image:"https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=500",
+stores:[1,2,4,5]
+},
+
+{
+id:24,
+name:"Bread",
+category:"Bakery",
+price:45,
+image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:25,
+name:"Croissant",
+category:"Bakery",
+price:65,
+image:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500",
+stores:[1,3,4]
+},
+
+{
+id:26,
+name:"Chocolate Cake",
+category:"Bakery",
+price:250,
+image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500",
+stores:[2,3,5]
+},
+
+{
+id:27,
+name:"Rice",
+category:"Groceries",
+price:65,
+image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:28,
+name:"Wheat Flour",
+category:"Groceries",
+price:55,
+image:"https://images.unsplash.com/photo-1627485937980-221c88ac04f9?w=500",
+stores:[1,2,4]
+},
+
+{
+id:29,
+name:"Cooking Oil",
+category:"Groceries",
+price:150,
+image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500",
+stores:[1,3,4,5]
+},
+
+{
+id:30,
+name:"Potato Chips",
+category:"Snacks",
+price:20,
+image:"https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:31,
+name:"Chocolate",
+category:"Snacks",
+price:40,
+image:"https://images.unsplash.com/photo-1548907040-4d42e3c8c3c5?w=500",
+stores:[1,2,4]
+},
+
+{
+id:32,
+name:"Almonds",
+category:"Snacks",
+price:180,
+image:"https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=500",
+stores:[2,3,5]
+},
+
+{
+id:33,
+name:"Shampoo",
+category:"Personal Care",
+price:120,
+image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500",
+stores:[1,2,3,5]
+},
+
+{
+id:34,
+name:"Soap",
+category:"Personal Care",
+price:35,
+image:"https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=500",
+stores:[1,2,3,4,5]
+},
+
+{
+id:35,
+name:"Toothpaste",
+category:"Personal Care",
+price:65,
+image:"https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=500",
+stores:[1,3,4,5]
+},
+
+{
+id:36,
+name:"Detergent",
+category:"Household",
+price:110,
+image:"https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?w=500",
+stores:[1,2,4,5]
+},
+
+{
+id:37,
+name:"Dishwashing Liquid",
+category:"Household",
+price:85,
+image:"https://images.unsplash.com/photo-1603905179139-dc9a8f3d7b2c?w=500",
+stores:[1,3,4]
+},
+
+{
+id:38,
+name:"Tissue Pack",
+category:"Household",
+price:50,
+image:"https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500",
+stores:[2,3,5]
+}
+
+];
+
+
+let cart = [];
+
+let selectedCategory = "All";
+
+let adminOrders = [];
+
+let customers = new Set();
+
+
+// =====================================================
+// CATEGORIES
+// =====================================================
+
+const categoryNames = [
+
+"All",
+"Fruits",
+"Vegetables",
+"Juices",
+"Dairy",
+"Bakery",
+"Groceries",
+"Snacks",
+"Personal Care",
+"Household"
+
+];
+
+
+function displayCategories() {
+
+    document
+        .getElementById("categories")
+        .innerHTML =
+
+        categoryNames
+        .map(category => `
+
+            <button
+                class="${
+                    selectedCategory === category
+                    ? "active"
+                    : ""
+                }"
+                onclick="filterCategory('${category}')">
+
+                ${category}
+
+            </button>
+
+        `)
+        .join("");
+
+}
+
+
+function filterCategory(category) {
+
+    selectedCategory = category;
+
+    displayCategories();
+
+    displayProducts();
+
+}
+
+
+// =====================================================
+// GET STORE
+// =====================================================
+
+function getStore(storeId) {
+
+    return stores.find(
+        store => store.id === storeId
+    );
+
+}
+
+
+// =====================================================
+// DISPLAY PRODUCTS
+// =====================================================
+
+function displayProducts() {
+
+    let search =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+
+    let filtered =
+        products.filter(product =>
+
+            (
+                selectedCategory === "All" ||
+                product.category === selectedCategory
+            )
+
+            &&
+
+            product.name
+            .toLowerCase()
+            .includes(search)
+
+        );
+
+
+    document
+        .getElementById("productList")
+        .innerHTML =
+
+        filtered.length
+
+        ?
+
+        filtered
+        .map(product => {
+
+            let availableStores =
+                product.stores
+                .map(id => getStore(id))
+                .filter(Boolean);
+
+
+            return `
+
+                <div class="product">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <p>
+                        ₹${product.price}
+                    </p>
+
+
+                    <div class="availability">
+
+                        📍 Available in
+                        <strong>
+                            ${availableStores.length}
+                            stores
+                        </strong>
+
+                    </div>
+
+
+                    <div class="store-select">
+
+                        <label>
+                            🏪 Select Store:
+                        </label>
+
+                        <select
+                            id="store-${product.id}">
+
+                            <option value="">
+                                -- Select Store --
+                            </option>
+
+                            ${
+                                availableStores
+                                .map(store => `
+
+                                    <option
+                                        value="${store.id}">
+
+                                        ${store.name}
+                                        -
+                                        ${store.location}
+
+                                    </option>
+
+                                `)
+                                .join("")
+                            }
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        onclick="addToCart(${product.id})">
+
+                        Add to Cart +
+
+                    </button>
+
+                </div>
+
+            `;
+
+        })
+        .join("")
+
+        :
+
+        "<p>No products found!</p>";
+
+}
+
+
+// =====================================================
+// DISPLAY STORES
+// =====================================================
+
+function displayStores() {
+
+    document
+        .getElementById("storeList")
+        .innerHTML =
+
+        stores
+        .map(store => `
+
+            <div class="store-card">
+
+                <span class="store-tag">
+                    🏪 FreshMart Store
+                </span>
+
+                <h3>
+                    ${store.name}
+                </h3>
+
+                <p>
+                    📍 ${store.address}
+                </p>
+
+                <p>
+                    📞 ${store.phone}
+                </p>
+
+                <p>
+                    🕐 ${store.timing}
+                </p>
+
+                <p>
+                    ⭐ Rating:
+                    ${store.rating}/5
+                </p>
+
+                <p>
+                    👨‍💼 Store Manager:
+                    ${store.manager}
+                </p>
+
+                <p>
+                    📦 Products available:
+                    <strong>
+                        ${
+                            products.filter(product =>
+                                product.stores.includes(store.id)
+                            ).length
+                        }
+                    </strong>
+                </p>
+
+            </div>
+
+        `)
+        .join("");
+
+}
+
+
+// =====================================================
+// CART
+// =====================================================
+
+function addToCart(id) {
+
+    let product =
+        products.find(
+            product => product.id === id
+        );
+
+
+    if (!product) return;
+
+
+    let storeSelect =
+        document.getElementById(
+            "store-" + id
+        );
+
+
+    let storeId =
+        Number(storeSelect.value);
+
+
+    if (!storeId) {
+
+        alert(
+            "Please select a store before adding this product."
+        );
+
+        storeSelect.focus();
+
+        return;
+
+    }
+
+
+    let store =
+        getStore(storeId);
+
+
+    let item =
+        cart.find(
+            product =>
+                product.id === id &&
+                product.storeId === storeId
+        );
+
+
+    if (item) {
+
+        item.quantity++;
+
+    } else {
+
+        cart.push({
+
+            ...product,
+
+            quantity: 1,
+
+            storeId: storeId,
+
+            storeName: store.name,
+
+            storeLocation: store.location,
+
+            storeAddress: store.address
+
+        });
+
+    }
+
+
+    displayCart();
+
+
+    alert(
+        product.name +
+        " added from " +
+        store.name
+    );
+
+}
+
+
+function displayCart() {
+
+    let cartItems =
+        document.getElementById("cartItems");
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML =
+            "<p>Your cart is empty! ❤️</p>";
+
+    } else {
+
+        cartItems.innerHTML =
+
+            cart
+            .map((item, index) => `
+
+                <div class="cart-item">
+
+                    <div class="cart-info">
+
+                        <img
+                            src="${item.image}">
+
+                        <div>
+
+                            <h3>
+                                ${item.name}
+                            </h3>
+
+                            <p>
+                                ₹${item.price} each
+                            </p>
+
+                            <div class="store-info-cart">
+
+                                🏪
+                                <strong>
+                                    ${item.storeName}
+                                </strong>
+
+                                <br>
+
+                                📍
+                                ${item.storeLocation}
+
+                                <br>
+
+                                ${item.storeAddress}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity(${index},-1)">
+
+                            −
+
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            onclick="changeQuantity(${index},1)">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+
+                    <strong>
+
+                        ₹${item.price * item.quantity}
+
+                    </strong>
+
+
+                    <button
+                        class="remove"
+                        onclick="removeItem(${index})">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+            `)
+            .join("");
+
+    }
+
+
+    let total =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.price * item.quantity,
+            0
+        );
+
+
+    let count =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.quantity,
+            0
+        );
+
+
+    document
+        .getElementById("total")
+        .textContent = total;
+
+
+    document
+        .getElementById("count")
+        .textContent = count;
+
+}
+
+
+function changeQuantity(index, amount) {
+
+    if (!cart[index]) return;
+
+
+    cart[index].quantity += amount;
+
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    displayCart();
+
+}
+
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    displayCart();
+
+}
+
+
+// =====================================================
+// CHECKOUT
+// =====================================================
+
+function goCheckout() {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("checkoutSection")
+        .classList
+        .remove("hidden");
+
+
+    document
+        .getElementById("orderSummary")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("successPage")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("checkoutSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+// =====================================================
+// PAYMENT
+// =====================================================
+
+document
+    .querySelectorAll(
+        'input[name="payment"]'
+    )
+    .forEach(input => {
+
+        input.addEventListener(
+            "change",
+            function() {
+
+                document
+                    .getElementById("upiDetails")
+                    .classList
+                    .toggle(
+                        "hidden",
+                        this.value !== "UPI"
+                    );
+
+
+                document
+                    .getElementById("cardDetails")
+                    .classList
+                    .toggle(
+                        "hidden",
+                        this.value !== "Debit / Credit Card"
+                    );
+
+            }
+        );
+
+    });
+
+
+// =====================================================
+// ORDER SUMMARY
+// =====================================================
+
+function showSummary() {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+
+    }
+
+
+    let payment =
+        document
+        .querySelector(
+            'input[name="payment"]:checked'
+        )
+        .value;
+
+
+    if (payment === "UPI") {
+
+        if (
+            !document
+            .getElementById("upiId")
+            .value
+            .trim()
+        ) {
+
+            alert(
+                "Please enter your UPI ID"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if (
+        payment ===
+        "Debit / Credit Card"
+    ) {
+
+        alert(
+            "Card payment is demo-only. Use Cash on Delivery or UPI for this demo."
+        );
+
+        return;
+
+    }
+
+
+    let total =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.price * item.quantity,
+            0
+        );
+
+
+    document
+        .getElementById("summaryItems")
+        .innerHTML =
+
+        cart
+        .map(item => `
+
+            <div
+                class="summary"
+                style="margin-bottom:10px;">
+
+                <p>
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    × ${item.quantity}
+
+                    = ₹${item.price * item.quantity}
+
+                </p>
+
+                <p>
+
+                    🏪
+                    Store:
+                    <strong>
+                        ${item.storeName}
+                    </strong>
+
+                </p>
+
+                <p>
+
+                    📍
+                    ${item.storeAddress}
+
+                </p>
+
+            </div>
+
+        `)
+        .join("");
+
+
+    document
+        .getElementById("finalTotal")
+        .textContent = total;
+
+
+    document
+        .getElementById("summaryPayment")
+        .textContent =
+        "Payment Method: " + payment;
+
+
+    document
+        .getElementById("summaryAddress")
+        .textContent =
+
+        "Delivery Address: " +
+
+        document
+            .getElementById("address")
+            .value +
+
+        ", " +
+
+        document
+            .getElementById("city")
+            .value +
+
+        ", " +
+
+        document
+            .getElementById("state")
+            .value +
+
+        " - " +
+
+        document
+            .getElementById("pincode")
+            .value;
+
+
+    document
+        .getElementById("orderSummary")
+        .classList
+        .remove("hidden");
+
+
+    document
+        .getElementById("orderSummary")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+// =====================================================
+// PLACE ORDER
+// =====================================================
+
+function placeOrder() {
+
+    let orderNumber =
+        "FM" +
+        Date.now()
+        .toString()
+        .slice(-8);
+
+
+    let address =
+
+        document
+            .getElementById("address")
+            .value +
+
+        ", " +
+
+        document
+            .getElementById("city")
+            .value +
+
+        ", " +
+
+        document
+            .getElementById("state")
+            .value +
+
+        " - " +
+
+        document
+            .getElementById("pincode")
+            .value;
+
+
+    let payment =
+        document
+        .querySelector(
+            'input[name="payment"]:checked'
+        )
+        .value;
+
+
+    let total =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.price * item.quantity,
+            0
+        );
+
+
+    customers.add(
+        document
+        .getElementById("customerEmail")
+        .value
+    );
+
+
+    adminOrders.push({
+
+        id: orderNumber,
+
+        customer:
+            document
+            .getElementById("customerName")
+            .value,
+
+        email:
+            document
+            .getElementById("customerEmail")
+            .value,
+
+        phone:
+            document
+            .getElementById("phone")
+            .value,
+
+        payment: payment,
+
+        total: total,
+
+        address: address,
+
+        items: cart.map(item => ({
+
+            name: item.name,
+
+            quantity: item.quantity,
+
+            price: item.price,
+
+            storeId: item.storeId,
+
+            storeName: item.storeName,
+
+            storeAddress: item.storeAddress
+
+        }))
+
+    });
+
+
+    document
+        .getElementById("orderId")
+        .textContent = orderNumber;
+
+
+    document
+        .getElementById("successAddress")
+        .textContent = address;
+
+
+    document
+        .getElementById("orderSummary")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("successPage")
+        .classList
+        .remove("hidden");
+
+
+    cart = [];
+
+    displayCart();
+
+
+    document
+        .getElementById("successPage")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+// =====================================================
+// NEW SHOPPING
+// =====================================================
+
+function newShopping() {
+
+    document
+        .getElementById("successPage")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("checkoutSection")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("deliveryForm")
+        .reset();
+
+
+    document
+        .getElementById("cod")
+        .checked = true;
+
+
+    document
+        .getElementById("upiDetails")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("cardDetails")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("home")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+// =====================================================
+// ADMIN DASHBOARD
+// =====================================================
+
+function updateAdminDashboard() {
+
+    document
+        .getElementById("adminProductCount")
+        .textContent = products.length;
+
+
+    document
+        .getElementById("adminOrderCount")
+        .textContent =
+        adminOrders.length;
+
+
+    document
+        .getElementById("adminCustomerCount")
+        .textContent =
+        customers.size;
+
+
+    document
+        .getElementById("adminStoreCount")
+        .textContent =
+        stores.length;
+
+
+    let sales =
+        adminOrders.reduce(
+            (total, order) =>
+                total + order.total,
+            0
+        );
+
+
+    document
+        .getElementById("adminSales")
+        .textContent = sales;
+
+
+    displayAdminProducts();
+
+    displayAdminOrders();
+
+    displayAdminStores();
+
+    populateAdminStoreSelect();
+
+}
+
+
+// =====================================================
+// ADMIN STORE SELECT
+// =====================================================
+
+function populateAdminStoreSelect() {
+
+    document
+        .getElementById("newProductStores")
+        .innerHTML =
+
+        stores
+        .map(store => `
+
+            <option value="${store.id}">
+
+                ${store.name}
+
+            </option>
+
+        `)
+        .join("");
+
+}
+
+
+// =====================================================
+// ADMIN PRODUCT DISPLAY
+// =====================================================
+
+function displayAdminProducts() {
+
+    document
+        .getElementById("adminProductList")
+        .innerHTML =
+
+        products
+        .map(product => `
+
+            <div class="product">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <p>
+                    ₹${product.price}
+                </p>
+
+                <p>
+                    Category:
+                    ${product.category}
+                </p>
+
+                <div class="availability">
+
+                    🏪 Available Stores:
+
+                    <br><br>
+
+                    ${
+                        product.stores
+                        .map(id => {
+
+                            let store =
+                                getStore(id);
+
+                            return store
+                                ? "• " + store.name
+                                : "";
+
+                        })
+                        .join("<br>")
+                    }
+
+                </div>
+
+                <button
+                    class="remove"
+                    onclick="deleteAdminProduct(${product.id})">
+
+                    🗑️ Delete
+
+                </button>
+
+            </div>
+
+        `)
+        .join("");
+
+}
+
+
+// =====================================================
+// ADD ADMIN PRODUCT
+// =====================================================
+
+function addAdminProduct() {
+
+    let name =
+        document
+        .getElementById("newProductName")
+        .value
+        .trim();
+
+
+    let price =
+        Number(
+            document
+            .getElementById("newProductPrice")
+            .value
+        );
+
+
+    let category =
+        document
+        .getElementById("newProductCategory")
+        .value;
+
+
+    let selectedStores =
+        Array.from(
+            document
+            .getElementById("newProductStores")
+            .selectedOptions
+        )
+        .map(option =>
+            Number(option.value)
+        );
+
+
+    if (!name || !price) {
+
+        alert(
+            "Please enter product name and price."
+        );
+
+        return;
+
+    }
+
+
+    if (selectedStores.length === 0) {
+
+        alert(
+            "Please select at least one store."
+        );
+
+        return;
+
+    }
+
+
+    let newProduct = {
+
+        id:
+
+            products.length > 0
+
+            ?
+
+            Math.max(
+                ...products.map(
+                    product => product.id
+                )
+            ) + 1
+
+            :
+
+            1,
+
+        name: name,
+
+        category: category,
+
+        price: price,
+
+        stores: selectedStores,
+
+        image:
+            "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500"
+
+    };
+
+
+    products.push(newProduct);
+
+
+    document
+        .getElementById("newProductName")
+        .value = "";
+
+
+    document
+        .getElementById("newProductPrice")
+        .value = "";
+
+
+    document
+        .getElementById("newProductStores")
+        .selectedIndex = -1;
+
+
+    alert(
+        "Product added successfully!"
+    );
+
+
+    displayAdminProducts();
+
+    displayProducts();
+
+    updateAdminDashboard();
+
+}
+
+
+// =====================================================
+// DELETE ADMIN PRODUCT
+// =====================================================
+
+function deleteAdminProduct(id) {
+
+    let confirmDelete =
+        confirm(
+            "Are you sure you want to delete this product?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    let index =
+        products.findIndex(
+            product => product.id === id
+        );
+
+
+    if (index !== -1) {
+
+        products.splice(index, 1);
+
+    }
+
+
+    displayAdminProducts();
+
+    displayProducts();
+
+    updateAdminDashboard();
+
+
+    alert(
+        "Product deleted successfully!"
+    );
+
+}
+
+
+// =====================================================
+// ADMIN STORE DISPLAY
+// =====================================================
+
+function displayAdminStores() {
+
+    document
+        .getElementById("adminStoreList")
+        .innerHTML =
+
+        stores
+        .map(store => `
+
+            <div class="store-card admin-store">
+
+                <span class="store-tag">
+                    Store ID: ${store.id}
+                </span>
+
+                <h3>
+                    ${store.name}
+                </h3>
+
+                <p>
+                    📍 ${store.address}
+                </p>
+
+                <p>
+                    📞 ${store.phone}
+                </p>
+
+                <p>
+                    🕐 ${store.timing}
+                </p>
+
+                <p>
+                    ⭐ ${store.rating}/5
+                </p>
+
+                <p>
+                    👨‍💼 Manager:
+                    ${store.manager}
+                </p>
+
+                <p>
+                    📦 Products:
+                    ${
+                        products.filter(product =>
+                            product.stores.includes(store.id)
+                        ).length
+                    }
+                </p>
+
+            </div>
+
+        `)
+        .join("");
+
+}
+
+
+// =====================================================
+// ADMIN ORDERS
+// =====================================================
+
+function displayAdminOrders() {
+
+    let orderList =
+        document
+        .getElementById("adminOrdersList");
+
+
+    if (adminOrders.length === 0) {
+
+        orderList.innerHTML =
+            "<p>No orders yet.</p>";
+
+        return;
+
+    }
+
+
+    orderList.innerHTML =
+
+        adminOrders
+        .map(order => `
+
+            <div class="summary">
+
+                <h3>
+
+                    Order ID:
+                    ${order.id}
+
+                </h3>
+
+                <p>
+
+                    👤 Customer:
+                    ${order.customer}
+
+                </p>
+
+                <p>
+
+                    📧 Email:
+                    ${order.email}
+
+                </p>
+
+                <p>
+
+                    📞 Phone:
+                    ${order.phone}
+
+                </p>
+
+                <p>
+
+                    💳 Payment:
+                    ${order.payment}
+
+                </p>
+
+                <p>
+
+                    💰 Total:
+                    ₹${order.total}
+
+                </p>
+
+                <p>
+
+                    📍 Delivery Address:
+                    ${order.address}
+
+                </p>
+
+                <br>
+
+                <h4>
+                    Products & Stores:
+                </h4>
+
+                ${
+                    order.items
+                    .map(item => `
+
+                        <div
+                            class="store-info-cart"
+                            style="margin-top:10px;">
+
+                            <p>
+
+                                🛍️
+                                <strong>
+                                    ${item.name}
+                                </strong>
+
+                                × ${item.quantity}
+
+                                =
+                                ₹${item.price * item.quantity}
+
+                            </p>
+
+                            <p>
+
+                                🏪 Store:
+                                <strong>
+                                    ${item.storeName}
+                                </strong>
+
+                            </p>
+
+                            <p>
+
+                                📍
+                                ${item.storeAddress}
+
+                            </p>
+
+                        </div>
+
+                    `)
+                    .join("")
+                }
+
+            </div>
+
+        `)
+        .join("");
+
+}
+
+
+// =====================================================
+// INITIALIZE
+// =====================================================
+
+displayCategories();
+
+displayProducts();
+
+displayCart();
+
+displayStores();
+
+populateAdminStoreSelect();
+
+</script>
+
+</body>
+</html>
